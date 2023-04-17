@@ -14,10 +14,6 @@ namespace WindowsFormsApp1 {
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e) {
-
-        }
-
         private void button1_Click(object sender, EventArgs e) {
 
             //tbAns.Text = ans.ToString();
@@ -26,6 +22,22 @@ namespace WindowsFormsApp1 {
             int sum = num1 + num2;
             tbAns.Text = sum.ToString();
 
+        }
+
+        //イベントハンドラ
+        private void btPow_Click(object sender, EventArgs e) {
+
+            //double result = Math.Pow((double)nudX.Value, (double)nudY.Value);
+            //tbResult.Text = result.ToString();
+            //１行
+            //tbResult.Text = (Math.Pow((double)nudX.Value, (double)nudY.Value)).toString();
+            int res = 1;
+            
+            for (int i = 0; i < nudY.Value; i++)
+            {
+                res *= (int)nudX.Value;
+            }
+            tbResult.Text = res.ToString();
         }
 
     }
