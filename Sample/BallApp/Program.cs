@@ -30,18 +30,17 @@ namespace BallApp {
             //this.Height = 800;//高さ
             this.Size = new Size(800, 600);
             this.BackColor = Color.Red;
-            this.Text = "BallGame";
             this.MouseClick += Program_MouseClick;
 
             //form.ShowDialog();
 
- 
+
 
             moveTimer = new Timer();
             moveTimer.Interval = 1; //タイマーインターバル(ms)
             moveTimer.Tick += MoveTimer_Tick;   //デリゲート登録
         }
-
+        int cnt = 1;
         //マウスクリック時のイベントハンドラ
         private void Program_MouseClick(object sender, MouseEventArgs e) {
             //ボ－ルインスタンス生成
@@ -57,6 +56,9 @@ namespace BallApp {
             pbs.Add(pb);
 
             moveTimer.Start();  //タイマースタート
+
+            cnt = cnt + 1;
+            this.Text = cnt.ToString("BallGame" + " " + "ボールの数" + cnt + "回");
         }
 
         //タイマータイムアウト時のイベントハンドラ
