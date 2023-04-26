@@ -18,7 +18,7 @@ namespace BallApp {
             ;//空のメソッドにする
         }
 
-        public void Move(Keys direction) {
+        public override void Move(Keys direction) {
             if (direction == Keys.Right)
             {
                 if (PosX < 635)
