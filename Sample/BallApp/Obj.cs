@@ -31,7 +31,6 @@ namespace BallApp {
             Image = Image.FromFile(Path);
 
             //後ほど追加あり
-            
         }
 
         //移動メソッド(抽象メソッド)

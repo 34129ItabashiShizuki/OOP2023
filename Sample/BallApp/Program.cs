@@ -9,9 +9,11 @@ using System.Windows.Forms;
 namespace BallApp {
     //Formクラス継承
     class Program : Form {
+        Bar bar;
+        PictureBox pbBar;
 
-        private Timer moveTimer;    //タイマー用
         private PictureBox pb;
+        private Timer moveTimer;    //タイマー用
 
         private List<Obj> balls = new List<Obj>();    //ボールインスタンス格納用
         private List<PictureBox> pbs = new List<PictureBox>();      //表示用
@@ -22,24 +24,38 @@ namespace BallApp {
 
         public Program() {
 
+            //フォーム
             this.Size = new Size(800, 600);
-            this.BackColor = Color.Red;
+            this.BackColor = Color.Aquamarine;
             this.Text = "BallGame SoccerBall:0 TennisBall:0";
             this.MouseClick += Program_MouseClick;
             this.KeyDown += Program_KeyDown;
 
+            //Barインスタンス生成
+            bar = new Bar(330, 400);
+            pbBar = new PictureBox();
+            pbBar.Image = bar.Image;
+            pbBar.Location = new Point((int)bar.PosX, (int)bar.PosY);
+            pbBar.Size = new Size(150, 10);
+            pbBar.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbBar.Parent = this;
+
+            //タイマー生成
             moveTimer = new Timer();
             moveTimer.Interval = 1; //タイマーインターバル(ms)
             moveTimer.Tick += MoveTimer_Tick;   //デリゲート登録
         }
 
+        //キーが押された時のイベントハンドラ
         private void Program_KeyDown(object sender, KeyEventArgs e) {
+            bar.Move(e.KeyData);
+            pbBar.Location = new Point((int)bar.PosX, (int)bar.PosY);
         }
 
         //マウスクリック時のイベントハンドラ
         private void Program_MouseClick(object sender, MouseEventArgs e) {
             Obj ballobj = null;
-            pb = new PictureBox();   //画像を表示するコントロール
+            PictureBox pb = new PictureBox();   //画像を表示するコントロール
 
             //ボ－ルインスタンス生成
             if (e.Button == MouseButtons.Left)
@@ -62,7 +78,7 @@ namespace BallApp {
             balls.Add(ballobj);
             pbs.Add(pb);
 
-            this.Text = "BallGame SoccerBall:" + SoccerBall.Count + "TennisBall:" + TennisBall.Count;
+            this.Text = "BallGame SoccerBall：" + SoccerBall.Count + "TennisBall：" + TennisBall.Count;
 
             moveTimer.Start();  //タイマースタート
         }
