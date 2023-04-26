@@ -11,54 +11,60 @@ namespace BallApp {
     class Program : Form {
 
         private Timer moveTimer;    //タイマー用
-        private SoccerBall soccerBall;
         private PictureBox pb;
 
-        private List<SoccerBall> balls = new List<SoccerBall>();    //ボールインスタンス格納用
+        private List<Obj> balls = new List<Obj>();    //ボールインスタンス格納用
         private List<PictureBox> pbs = new List<PictureBox>();      //表示用
 
         static void Main(string[] args) {
             Application.Run(new Program());
         }
+
         public Program() {
 
-            //クラス
-            //Form form = new Form();
-
-            //プロパティ
-            //this.Width = 1200;//幅
-            //this.Height = 800;//高さ
             this.Size = new Size(800, 600);
             this.BackColor = Color.Red;
+            this.Text = "BallGame SoccerBall:0 TennisBall:0";
             this.MouseClick += Program_MouseClick;
-
-            //form.ShowDialog();
-
-
+            this.KeyDown += Program_KeyDown;
 
             moveTimer = new Timer();
             moveTimer.Interval = 1; //タイマーインターバル(ms)
             moveTimer.Tick += MoveTimer_Tick;   //デリゲート登録
         }
-        int cnt = 1;
+
+        private void Program_KeyDown(object sender, KeyEventArgs e) {
+        }
+
         //マウスクリック時のイベントハンドラ
         private void Program_MouseClick(object sender, MouseEventArgs e) {
-            //ボ－ルインスタンス生成
-            soccerBall = new SoccerBall(e.X-25,e.Y-25);
+            Obj ballobj = null;
             pb = new PictureBox();   //画像を表示するコントロール
-            pb.Image = soccerBall.Image;
-            pb.Location = new Point((int)soccerBall.PosX, (int)soccerBall.PosY);
-            pb.Size = new Size(50, 50);  //画像の表示サイズ
+
+            //ボ－ルインスタンス生成
+            if (e.Button == MouseButtons.Left)
+            {
+                ballobj = new SoccerBall(e.X - 25, e.Y - 25);
+                pb.Size = new Size(50, 50);  //画像の表示サイズ
+            }
+            else if (e.Button == MouseButtons.Right)
+            {
+                ballobj = new TennisBall(e.X - 12, e.Y - 12);
+                pb.Size = new Size(25, 25);  //画像の表示サイズ
+            }
+
+            
+            pb.Image = ballobj.Image;
+            pb.Location = new Point((int)ballobj.PosX, (int)ballobj.PosY);
             pb.SizeMode = PictureBoxSizeMode.StretchImage;  //画像の表示モード
             pb.Parent = this;
 
-            balls.Add(soccerBall);
+            balls.Add(ballobj);
             pbs.Add(pb);
 
-            moveTimer.Start();  //タイマースタート
+            this.Text = "BallGame SoccerBall:" + SoccerBall.Count + "TennisBall:" + TennisBall.Count;
 
-            cnt = cnt + 1;
-            this.Text = cnt.ToString("BallGame" + " " + "ボールの数" + cnt + "回");
+            moveTimer.Start();  //タイマースタート
         }
 
         //タイマータイムアウト時のイベントハンドラ
