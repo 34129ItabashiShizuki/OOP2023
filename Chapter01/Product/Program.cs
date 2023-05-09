@@ -52,7 +52,9 @@ namespace ProductSample {
             Console.WriteLine("あなたは生まれてから今日まで{0}日目です", ts.Days);
             #endregion
 
-            //Console.Write("あなたは{0}曜日に生まれました",ts.Days);
+            #region 0509演習３
+            Console.Write("あなたは{0}に生まれました",birth.ToString("dddd"));
+            #endregion
         }
     }
 }
