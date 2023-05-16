@@ -26,7 +26,7 @@ namespace SalesCalculator {
             return dict;
         }
         //売上データを読み込み、Saleオブジェクトのリストを返す
-        static List<Sale> ReadSales(string filePath) {
+        public static List<Sale> ReadSales(string filePath) {
             //売上データを格納する
             List<Sale> sales = new List<Sale>();
 
