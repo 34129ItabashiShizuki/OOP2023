@@ -40,7 +40,7 @@ namespace SalesCalculator {
                 //Saleインスタンス生成
                 var sale = new Sale {
                     ShopName = items[0],
-                    ProductCategory = items[0],
+                    ProductCategory = items[1],
                     Amount = int.Parse(items[2])
                 };
                 //Saleインスタンスをコレクションに追加
