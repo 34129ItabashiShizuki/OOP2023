@@ -26,7 +26,10 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_1(List<int> numbers) {
-            
+            var exists = list.Exists(n => n % 8 == 0  %        %);
+            if (exists) {
+                Console.WriteLine(exists);
+            }
         }
 
         private static void Exercise1_2(List<int> numbers) {
