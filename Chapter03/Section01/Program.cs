@@ -15,7 +15,7 @@ namespace Section01 {
             //int count = numbers.Count(n => 0 < n && n % 5 == 0);
 
             //合計
-            var sum = numbers.Where(n => n % 2 == 0).Average();
+            var sum = numbers.Where(n => n % 2 == 0).Sum();
 
             Console.WriteLine(sum);
         }
