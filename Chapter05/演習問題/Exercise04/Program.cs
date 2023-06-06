@@ -28,12 +28,15 @@ namespace Exercise04 {
 #endif
 
 #if NonArray
-            
+            foreach (var item in line.Split(';')) {
+                var array = item.Split('=');
+                Console.WriteLine("{0}:{1}", ToJapanese(array[0]), array[1]);
+            }
 #elif StringArray
             foreach(var line in lines){
                 foreach (var item in line.Split(';')) {
                    var array = item.Split('=');
-                    Console.WriteLine("{0}:{1}",ToJapanese(array[0],array[1]));
+                    Console.WriteLine("{0}:{1}",ToJapanese(array[0]),array[1]);
                 }
             };
 #endif
