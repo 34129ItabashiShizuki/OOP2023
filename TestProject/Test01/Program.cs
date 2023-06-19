@@ -12,6 +12,7 @@ namespace Test01 {
             foreach (var obj in TotalBySubject) {
                 Console.WriteLine("{0} {1}", obj.Key, obj.Value);
             }
+        
         }
     }
 }
