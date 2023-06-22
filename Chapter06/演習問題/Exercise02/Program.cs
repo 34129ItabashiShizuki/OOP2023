@@ -58,8 +58,10 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_4(List<Book> books) {
-            var code4 = books.First(s => s.Price >= 4000);
-            Console.WriteLine(code4.Title);
+            var code4 = books.FirstOrDefault(s => s.Price >= 4000);
+            if (code4 != null) {
+                Console.WriteLine(code4.Title);
+            }
         }
 
         private static void Exercise2_5(List<Book> books) {
@@ -68,7 +70,7 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_6(List<Book> books) {
-            var code6 = books.OrderBy(s=> s.Pages >= 400);
+            var code6 = books.Where(s => s.Pages >= 400).OrderByDescending(b => b.Price);
             foreach (var item in code6) {
                 Console.WriteLine(item.Title + item.Price);
             }
@@ -76,7 +78,10 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_7(List<Book> books) {
-            
+            var code7 = books.Where(b => b.Title.Contains("C#") && b.Pages <= 500);
+            foreach (var item in code7) {
+                Console.WriteLine(item.Title + item.Price);
+            }
         }
     }
     class Book {
