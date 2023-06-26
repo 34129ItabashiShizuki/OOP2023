@@ -25,24 +25,30 @@ namespace Section02 {
                 Console.Write("人口:");
                 cityinfo.Population = int.Parse(Console.ReadLine());
 
+
+                //既に県名が登録済みか
                 if (prefDict.ContainsKey(name)) {
+                    //List<CityInfo>が存在するためaddで市町村データを追加
                     prefDict[name].Add(cityinfo);
-                    //Console.WriteLine("既に県名が登録されています。");
-                    //Console.WriteLine("追加しますか？(y/n)");
-                    //if (Console.ReadLine() != "y") {
-                    //    continue;
-                    //}
+                    
                 }
                 else {
+                    //List<CityInfo>が存在しないため、Listを作成(new)して市町村データを登録
                     prefDict[name] = new List<CityInfo> { cityinfo };
                 }
-                
+
                 //登録処理
                 //a[name] = new CityInfo() {
                 //    City = cityinfo,
                 //    Population = population
                 //};
                 //prefDict[name] = cityinfo;
+
+                //Console.WriteLine("既に県名が登録されています。");
+                //Console.WriteLine("追加しますか？(y/n)");
+                //if (Console.ReadLine() != "y") {
+                //    continue;
+                //}
             }
             Console.WriteLine();
             Console.WriteLine("1:一覧表示,2:県名指定");
@@ -51,9 +57,9 @@ namespace Section02 {
 
             if (selected == "1") {
                 //一覧表示
-                foreach (var item1 in prefDict) {
-                    foreach (var item2 in item1.Value) {
-                        Console.WriteLine("{0}[{1}(人口:{2}人)]", item1.Key, item2.City, item2.Population);
+                foreach (var nameData in prefDict) {
+                    foreach (var cityData in nameData.Value.OrderByDescending(x => x.Population))  {
+                        Console.WriteLine("{0}[{1}(人口:{2}人)]", nameData.Key, cityData.City, cityData.Population);
                     }
                 }
             }
@@ -61,7 +67,7 @@ namespace Section02 {
                 //県名指定表示
                 Console.Write("県名:");
                 var c = Console.ReadLine();
-                foreach (var item in prefDict[c]) {
+                foreach (var item in prefDict[c].OrderByDescending(x => x.Population)) {
                     Console.WriteLine(item.City + "人口:" + item.Population);
                 }
             }
