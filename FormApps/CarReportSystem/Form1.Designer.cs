@@ -63,7 +63,7 @@ namespace CarReportSystem {
             this.pbCarImage = new System.Windows.Forms.PictureBox();
             this.statusDisp = new System.Windows.Forms.StatusStrip();
             this.tsInfoText = new System.Windows.Forms.ToolStripStatusLabel();
-            this.cbColor = new System.Windows.Forms.ColorDialog();
+            this.cdColor = new System.Windows.Forms.ColorDialog();
             this.gbMaker.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarReports)).BeginInit();
             this.menuItems.SuspendLayout();
@@ -389,8 +389,9 @@ namespace CarReportSystem {
             // 色設定ToolStripMenuItem
             // 
             this.色設定ToolStripMenuItem.Name = "色設定ToolStripMenuItem";
-            this.色設定ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.色設定ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.色設定ToolStripMenuItem.Text = "色設定";
+            this.色設定ToolStripMenuItem.Click += new System.EventHandler(this.色設定ToolStripMenuItem_Click);
             // 
             // ヘルプToolStripMenuItem
             // 
@@ -531,7 +532,7 @@ namespace CarReportSystem {
         private System.Windows.Forms.ToolStripMenuItem ヘルプToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 色設定ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem バージョン情報ToolStripMenuItem;
-        private System.Windows.Forms.ColorDialog cbColor;
+        private System.Windows.Forms.ColorDialog cdColor;
     }
 }
 
