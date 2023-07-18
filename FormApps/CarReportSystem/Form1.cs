@@ -48,7 +48,25 @@ namespace CarReportSystem {
             };
             CarReports.Add(carreport);
 
+            setCbAuthor(cbAuthor.Text); //記録者コンボボックスの履歴登録処理
+
+            setCbCarName(cbCarName.Text);   //車名コンボボックスの履歴登録処理
+
             Clear();    //項目クリア処理
+        }
+
+        //記録者コンボボックスの履歴登録処理
+        private void setCbAuthor(string author) {
+            if (!cbAuthor.Items.Contains(author)) {
+                cbAuthor.Items.Add(author);
+            }
+        }
+
+        //車名コンボボックスの履歴登録処理
+        private void setCbCarName(string carname) {
+            if (!cbCarName.Items.Contains(carname)) {
+                cbCarName.Items.Add(carname);
+            }
         }
 
         //ラジオボタンで選択されているメーカーを返却
@@ -111,6 +129,7 @@ namespace CarReportSystem {
             dgvCarReports.CurrentRow.Cells[3].Value = cbCarName.Text;
             dgvCarReports.CurrentRow.Cells[4].Value = tbReport.Text;
             dgvCarReports.CurrentRow.Cells[5].Value = pbCarImage.Image;
+            dgvCarReports.Refresh();    //一覧更新
         }
 
         //レコードの選択時
