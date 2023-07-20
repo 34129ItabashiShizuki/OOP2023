@@ -212,10 +212,9 @@ namespace CarReportSystem {
             pbCarImage.SizeMode = (PictureBoxSizeMode)mode;
         }
 
-        private void バージョン情報ToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void バージョン情報ToolStripMenuItem_Click_1(object sender, EventArgs e) {
             var vf = new VersionForm();
             vf.ShowDialog();    //モーダルダイヤログとして表示
         }
-
     }
 }
