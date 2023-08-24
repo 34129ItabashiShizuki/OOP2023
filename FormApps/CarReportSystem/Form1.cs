@@ -120,6 +120,11 @@ namespace CarReportSystem {
             btDeleteReport.Enabled = false; //削除ボタン無効
             btImageDelete.Enabled = false;
             btScaleChange.Enabled = false;
+            tsInfoText.Text = " "; //情報表示領域のテキストを初期化
+            //tsTimeDisp.Text = DateTime.Now.ToString("yyyy年MM月dd日 HH時mm分ss秒");
+            tsTimeDisp.BackColor = Color.Black;
+            tsTimeDisp.ForeColor = Color.White;
+            tmTimeUpdate.Start(); //時刻更新用のタイマー
 
             //設定ファイルを逆シリアル化して背景を設定
             using (var reader = XmlReader.Create("settings.xml")) {
@@ -240,6 +245,10 @@ namespace CarReportSystem {
                 var serializer = new XmlSerializer(settings.GetType());
                 serializer.Serialize(writer, settings);
             }
+        }
+
+        private void tmTimeUpdate_Tick(object sender, EventArgs e) {
+            tsTimeDisp.Text = DateTime.Now.ToString("yyyy年MM月dd日 HH時mm分ss秒");
         }
     }
 }
