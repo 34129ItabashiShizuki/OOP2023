@@ -204,8 +204,8 @@ namespace CarReportSystem {
 
             btModifyReport.Enabled = false; //マスクする
             btDeleteReport.Enabled = false;
-            btImageDelete.Enabled = false;  
-            btScaleChange.Enabled = false;
+            //btImageDelete.Enabled = false;  
+            //btScaleChange.Enabled = false;
         }
 
         private void 終了XToolStripMenuItem_Click(object sender, EventArgs e) {
