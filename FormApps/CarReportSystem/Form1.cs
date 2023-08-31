@@ -295,8 +295,10 @@ namespace CarReportSystem {
                 tbReport.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
                 pbCarImage.Image = (Image)dgvCarReports.CurrentRow.Cells[5].Value;
 
-                btModifyReport.Enabled = true;     //修正ボタン有効
-                btDeleteReport.Enabled = true;     //削除ボタン有効
+                btModifyReport.Enabled = true;  //修正ボタン有効
+                btDeleteReport.Enabled = true;  //削除ボタン有効
+                btImageDelete.Enabled = true;   //削除ボタン有効
+                btScaleChange.Enabled = true;   //修正ボタン有効
             }
         }
     }
