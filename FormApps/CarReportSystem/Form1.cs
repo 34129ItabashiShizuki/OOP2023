@@ -119,7 +119,7 @@ namespace CarReportSystem {
         private void Form1_Load(object sender, EventArgs e) {
             dgvCarReports.RowsDefaultCellStyle.BackColor = Color.LightYellow; //全体に色設定
             dgvCarReports.AlternatingRowsDefaultCellStyle.BackColor = Color.LightBlue;  //奇数行の色設定
-            dgvCarReports.Columns[5].Visible = false; //画像項目非表示
+            dgvCarReports.Columns[6].Visible = false; //画像項目非表示
             btModifyReport.Enabled = false; //修正ボタン無効
             btDeleteReport.Enabled = false; //削除ボタン無効
             btImageDelete.Enabled = false;
@@ -148,40 +148,46 @@ namespace CarReportSystem {
         }
 
         //修正ボタンイベントハンドラ
+        
         private void btModifyReport_Click(object sender, EventArgs e) {
-            dgvCarReports.CurrentRow.Cells[0].Value = dtpDate.Value;
-            dgvCarReports.CurrentRow.Cells[1].Value = cbAuthor.Text;
-            dgvCarReports.CurrentRow.Cells[2].Value = getSelectedMaker();
-            dgvCarReports.CurrentRow.Cells[3].Value = cbCarName.Text;
-            dgvCarReports.CurrentRow.Cells[4].Value = tbReport.Text;
-            dgvCarReports.CurrentRow.Cells[5].Value = pbCarImage.Image;
-            dgvCarReports.Refresh();    //一覧更新
+
+            dgvCarReports.CurrentRow.Cells[1].Value = dtpDate.Value;
+            dgvCarReports.CurrentRow.Cells[2].Value = cbAuthor.Text;
+            dgvCarReports.CurrentRow.Cells[3].Value = getSelectedMaker();
+            dgvCarReports.CurrentRow.Cells[4].Value = cbCarName.Text;
+            dgvCarReports.CurrentRow.Cells[5].Value = tbReport.Text;
+            dgvCarReports.CurrentRow.Cells[6].Value = pbCarImage.Image;
+            //dgvCarReports.Refresh();    //一覧更新
+
+            this.Validate();
+            this.carReportTableBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202315DataSet);
         }
 
-        private void setSelectedMaker(CarReport.MakerGroup makerGroup) {
+        private void setSelectedMaker(string makerGroup) {
             switch (makerGroup) {
-                case CarReport.MakerGroup.トヨタ:
+                case "トヨタ":
                     rbToyota.Checked = true;
                     break;
-                case CarReport.MakerGroup.日産:
+                case "日産":
                     rbNissan.Checked = true;
                     break;
-                case CarReport.MakerGroup.ホンダ:
+                case "ホンダ":
                     rbHonda.Checked = true;
                     break;
-                case CarReport.MakerGroup.輸入車:
+                case "輸入車":
                     rbImported.Checked = true;
                     break;
-                case CarReport.MakerGroup.スバル:
+                case "スバル":
                     rbSubaru.Checked = true;
                     break;
-                case CarReport.MakerGroup.スズキ:
+                case "スズキ":
                     rbSuzuki.Checked = true;
                     break;
-                case CarReport.MakerGroup.ダイハツ:
+                case "ダイハツ":
                     rbDaihatu.Checked = true;
                     break;
-                case CarReport.MakerGroup.その他:
+                case "その他":
                     rbOther.Checked = true;
                     break;
                 default:
@@ -288,19 +294,40 @@ namespace CarReportSystem {
         //レコードの選択時
         private void dgvCarReports_CellClick(object sender, DataGridViewCellEventArgs e) {
             if (dgvCarReports.RowCount != 0) {
-                dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[0].Value;
-                cbAuthor.Text = dgvCarReports.CurrentRow.Cells[1].Value.ToString();
-                setSelectedMaker((CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value);
-                cbCarName.Text = dgvCarReports.CurrentRow.Cells[3].Value.ToString();
-                tbReport.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
-                pbCarImage.Image = (Image)dgvCarReports.CurrentRow.Cells[5].Value;
+                dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[1].Value;
+                cbAuthor.Text = dgvCarReports.CurrentRow.Cells[2].Value.ToString();
+                setSelectedMaker(dgvCarReports.CurrentRow.Cells[3].Value.ToString());
+                cbCarName.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
+                tbReport.Text = dgvCarReports.CurrentRow.Cells[5].Value.ToString();
+                if (dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value)){
+                    pbCarImage.Image = ByteArrayToImage((byte[])dgvCarReports.CurrentRow.Cells[6].Value);
+                }
+                else {
+                    pbCarImage.Image = null;
+                }
+
 
                 btModifyReport.Enabled = true;  //修正ボタン有効
                 btDeleteReport.Enabled = true;  //削除ボタン有効
-                btImageDelete.Enabled = true;   //削除ボタン有効
-                btScaleChange.Enabled = true;   //修正ボタン有効
+                //btImageDelete.Enabled = true;   //削除ボタン有効
+                //btScaleChange.Enabled = true;   //修正ボタン有効
             }
         }
+
+        // バイト配列をImageオブジェクトに変換
+        public static Image ByteArrayToImage(byte[] b) {
+            ImageConverter imgconv = new ImageConverter();
+            Image img = (Image)imgconv.ConvertFrom(b);
+            return img;
+        }
+
+        // Imageオブジェクトをバイト配列に変換
+        public static byte[] ImageToByteArray(Image img) {
+            ImageConverter imgconv = new ImageConverter();
+            byte[] b = (byte[])imgconv.ConvertTo(img, typeof(byte[]));
+            return b;
+        }
+
 
         private void carReportTableBindingNavigatorSaveItem_Click(object sender, EventArgs e) {
             this.Validate();
@@ -312,6 +339,7 @@ namespace CarReportSystem {
         private void btConnection_Click(object sender, EventArgs e) {
             // TODO: このコード行はデータを 'infosys202315DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             this.carReportTableTableAdapter.Fill(this.infosys202315DataSet.CarReportTable);
+            dgvCarReports.ClearSelection(); //選択解除
         }
     }
 }
