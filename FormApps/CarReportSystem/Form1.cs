@@ -45,15 +45,25 @@ namespace CarReportSystem {
                 statusLabelDisp();
             }
 
-            var carreport = new CarReport() {
-                Date = dtpDate.Value,
-                Author = cbAuthor.Text,
-                CarImage = pbCarImage.Image,
-                CarName = cbCarName.Text,
-                Report = tbReport.Text,
-                Maker = getSelectedMaker(),
-            };
-            CarReports.Add(carreport);
+            DataRow newRow = infosys202315DataSet.CarReportTable.NewRow();
+            newRow[1] = dtpDate.Value;
+            newRow[2] = cbAuthor.Text;
+            newRow[3] = getSelectedMaker();
+            newRow[4] = cbCarName.Text;
+            newRow[5] = tbReport.Text;
+            newRow[6] = ImageToByteArray(pbCarImage.Image);
+
+            infosys202315DataSet.CarReportTable.Rows.Add(newRow);
+            this.carReportTableTableAdapter.Update(infosys202315DataSet.CarReportTable);
+            //var carreport = new CarReport() {
+            //    Date = dtpDate.Value,
+            //    Author = cbAuthor.Text,
+            //    CarImage = pbCarImage.Image,
+            //    CarName = cbCarName.Text,
+            //    Report = tbReport.Text,
+            //    Maker = getSelectedMaker(),
+            //};
+            //CarReports.Add(carreport);
 
             setCbAuthor(cbAuthor.Text); //記録者コンボボックスの履歴登録処理
 
@@ -140,10 +150,9 @@ namespace CarReportSystem {
 
         //削除ボタンイベントハンドラ
         private void btDeleteReport_Click(object sender, EventArgs e) {
-            DataGridViewSelectedRowCollection src = dgvCarReports.SelectedRows;
-            for (int i = src.Count - 1; i >= 0; i--) {
-                dgvCarReports.Rows.RemoveAt(src[i].Index);
-            }
+            //DataGridViewSelectedRowCollection src = dgvCarReports.SelectedRows;
+            dgvCarReports.Rows.RemoveAt(dgvCarReports.CurrentRow.Index);
+            this.tableAdapterManager.UpdateAll(this.infosys202315DataSet);
             Clear();
         }
 
@@ -253,42 +262,11 @@ namespace CarReportSystem {
         }
 
         private void 保存SToolStripMenuItem_Click(object sender, EventArgs e) {
-            if(sfdCarRepoSave.ShowDialog() == DialogResult.OK) {
-                try {
-                    //バイナリ形式でシリアル化
-                    var bf = new BinaryFormatter();
-                    using (FileStream fs = File.Open(sfdCarRepoSave.FileName, FileMode.Create)) {
-                        bf.Serialize(fs, CarReports);
-                    }
-                }
-                catch (Exception ex) {
-                    MessageBox.Show(ex.Message);
-                }
-            }
+            
         }
 
         private void 開くOToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (ofdCarRepoOpen.ShowDialog() == DialogResult.OK) {
-                try {
-                    //逆シリアル化をバイナリ形式を取り組む
-                    var bf = new BinaryFormatter();
-                    using (FileStream fs = File.Open(ofdCarRepoOpen.FileName, FileMode.Open, FileAccess.Read)) {
-                        CarReports = (BindingList<CarReport>)bf.Deserialize(fs);
-                        dgvCarReports.DataSource = null;
-                        dgvCarReports.DataSource = CarReports;
-                        Clear();
-                        foreach (var item in CarReports) {
-                            setCbAuthor(item.Author);
-                            setCbCarName(item.CarName);
-                        }
-                        dgvCarReports.ClearSelection();
-                        dgvCarReports.Columns[5].Visible = false;
-                    }
-                }
-                catch (Exception ex) {
-                    MessageBox.Show(ex.Message);
-                }
-            }
+            
         }
 
         //レコードの選択時
@@ -299,7 +277,7 @@ namespace CarReportSystem {
                 setSelectedMaker(dgvCarReports.CurrentRow.Cells[3].Value.ToString());
                 cbCarName.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
                 tbReport.Text = dgvCarReports.CurrentRow.Cells[5].Value.ToString();
-                if (dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value)){
+                if (!dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value)){
                     pbCarImage.Image = ByteArrayToImage((byte[])dgvCarReports.CurrentRow.Cells[6].Value);
                 }
                 else {
