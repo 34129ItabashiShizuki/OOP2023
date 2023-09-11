@@ -313,8 +313,6 @@ namespace CarReportSystem {
 
         }
 
-        
-
         private void dbConnection() {
             // TODO: このコード行はデータを 'infosys202315DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             this.carReportTableTableAdapter.Fill(this.infosys202315DataSet.CarReportTable);
@@ -328,6 +326,18 @@ namespace CarReportSystem {
 
         private void 接続OToolStripMenuItem_Click(object sender, EventArgs e) {
             dbConnection();
+        }
+
+        private void btAuthorSearch_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByAuthor(this.infosys202315DataSet.CarReportTable, tbAuthorSearch.Text);
+        }
+
+        private void btCarNameSearch_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByCarName(this.infosys202315DataSet.CarReportTable, tbCarNameSearch.Text);
+        }
+
+        private void btReset_Click(object sender, EventArgs e) {
+
         }
     }
 }
