@@ -62,7 +62,6 @@ namespace CarReportSystem {
             this.menuItems = new System.Windows.Forms.MenuStrip();
             this.ファイルFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.接続OToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.保存SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.終了XToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.編集HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.色設定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,7 +80,6 @@ namespace CarReportSystem {
             this.sfdCarRepoSave = new System.Windows.Forms.SaveFileDialog();
             this.carReportTableTableAdapter = new CarReportSystem.infosys202315DataSetTableAdapters.CarReportTableTableAdapter();
             this.tableAdapterManager = new CarReportSystem.infosys202315DataSetTableAdapters.TableAdapterManager();
-            this.btConnection = new System.Windows.Forms.Button();
             this.gbMaker.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarReports)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.carReportTableBindingSource)).BeginInit();
@@ -442,7 +440,6 @@ namespace CarReportSystem {
             // 
             this.ファイルFToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.接続OToolStripMenuItem,
-            this.保存SToolStripMenuItem,
             this.終了XToolStripMenuItem});
             this.ファイルFToolStripMenuItem.Name = "ファイルFToolStripMenuItem";
             this.ファイルFToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
@@ -454,15 +451,7 @@ namespace CarReportSystem {
             this.接続OToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.接続OToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.接続OToolStripMenuItem.Text = "接続(&O)...";
-            this.接続OToolStripMenuItem.Click += new System.EventHandler(this.開くOToolStripMenuItem_Click);
-            // 
-            // 保存SToolStripMenuItem
-            // 
-            this.保存SToolStripMenuItem.Name = "保存SToolStripMenuItem";
-            this.保存SToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.保存SToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.保存SToolStripMenuItem.Text = "保存(&S)...";
-            this.保存SToolStripMenuItem.Click += new System.EventHandler(this.保存SToolStripMenuItem_Click);
+            this.接続OToolStripMenuItem.Click += new System.EventHandler(this.接続OToolStripMenuItem_Click);
             // 
             // 終了XToolStripMenuItem
             // 
@@ -577,24 +566,12 @@ namespace CarReportSystem {
             this.tableAdapterManager.CarReportTableTableAdapter = this.carReportTableTableAdapter;
             this.tableAdapterManager.UpdateOrder = CarReportSystem.infosys202315DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // btConnection
-            // 
-            this.btConnection.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btConnection.Location = new System.Drawing.Point(11, 475);
-            this.btConnection.Name = "btConnection";
-            this.btConnection.Size = new System.Drawing.Size(75, 63);
-            this.btConnection.TabIndex = 26;
-            this.btConnection.Text = "接続";
-            this.btConnection.UseVisualStyleBackColor = true;
-            this.btConnection.Click += new System.EventHandler(this.btConnection_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(767, 647);
-            this.Controls.Add(this.btConnection);
             this.Controls.Add(this.btScaleChange);
             this.Controls.Add(this.statusDisp);
             this.Controls.Add(this.btImageOpen);
@@ -667,7 +644,6 @@ namespace CarReportSystem {
         private System.Windows.Forms.MenuStrip menuItems;
         private System.Windows.Forms.ToolStripMenuItem ファイルFToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 接続OToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 保存SToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 終了XToolStripMenuItem;
         private System.Windows.Forms.PictureBox pbCarImage;
         private System.Windows.Forms.Button btImageOpen;
@@ -688,7 +664,6 @@ namespace CarReportSystem {
         private System.Windows.Forms.BindingSource carReportTableBindingSource;
         private infosys202315DataSetTableAdapters.CarReportTableTableAdapter carReportTableTableAdapter;
         private infosys202315DataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.Button btConnection;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn authorDataGridViewTextBoxColumn;

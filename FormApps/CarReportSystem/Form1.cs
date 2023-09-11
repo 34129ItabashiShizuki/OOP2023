@@ -261,21 +261,7 @@ namespace CarReportSystem {
             tsTimeDisp.Text = DateTime.Now.ToString("yyyy年MM月dd日 HH時mm分ss秒");
         }
 
-        private void 保存SToolStripMenuItem_Click(object sender, EventArgs e) {
-            
-        }
-
-        private void 開くOToolStripMenuItem_Click(object sender, EventArgs e) {
-
-            // TODO: このコード行はデータを 'infosys202315DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
-            this.carReportTableTableAdapter.Fill(this.infosys202315DataSet.CarReportTable);
-            dgvCarReports.ClearSelection(); //選択解除
-
-            foreach (var carReport in infosys202315DataSet.CarReportTable) {
-                setCbAuthor(carReport.Author);
-                setCbCarName(carReport.CarName);
-            }
-        }
+       
 
         //レコードの選択時
         private void dgvCarReports_CellClick(object sender, DataGridViewCellEventArgs e) {
@@ -327,8 +313,9 @@ namespace CarReportSystem {
 
         }
 
-        //接続ボタンイベントハンドラ
-        private void btConnection_Click(object sender, EventArgs e) {
+        
+
+        private void dbConnection() {
             // TODO: このコード行はデータを 'infosys202315DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             this.carReportTableTableAdapter.Fill(this.infosys202315DataSet.CarReportTable);
             dgvCarReports.ClearSelection(); //選択解除
@@ -337,6 +324,10 @@ namespace CarReportSystem {
                 setCbAuthor(carReport.Author);
                 setCbCarName(carReport.CarName);
             }
+        }
+
+        private void 接続OToolStripMenuItem_Click(object sender, EventArgs e) {
+            dbConnection();
         }
     }
 }
