@@ -61,7 +61,7 @@ namespace CarReportSystem {
             this.btImageDelete = new System.Windows.Forms.Button();
             this.menuItems = new System.Windows.Forms.MenuStrip();
             this.ファイルFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.開くOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.接続OToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.保存SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.終了XToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.編集HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -441,26 +441,26 @@ namespace CarReportSystem {
             // ファイルFToolStripMenuItem
             // 
             this.ファイルFToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.開くOToolStripMenuItem,
+            this.接続OToolStripMenuItem,
             this.保存SToolStripMenuItem,
             this.終了XToolStripMenuItem});
             this.ファイルFToolStripMenuItem.Name = "ファイルFToolStripMenuItem";
             this.ファイルFToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.ファイルFToolStripMenuItem.Text = "ファイル(&F)";
             // 
-            // 開くOToolStripMenuItem
+            // 接続OToolStripMenuItem
             // 
-            this.開くOToolStripMenuItem.Name = "開くOToolStripMenuItem";
-            this.開くOToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.開くOToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.開くOToolStripMenuItem.Text = "開く(&O)...";
-            this.開くOToolStripMenuItem.Click += new System.EventHandler(this.開くOToolStripMenuItem_Click);
+            this.接続OToolStripMenuItem.Name = "接続OToolStripMenuItem";
+            this.接続OToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.接続OToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.接続OToolStripMenuItem.Text = "接続(&O)...";
+            this.接続OToolStripMenuItem.Click += new System.EventHandler(this.開くOToolStripMenuItem_Click);
             // 
             // 保存SToolStripMenuItem
             // 
             this.保存SToolStripMenuItem.Name = "保存SToolStripMenuItem";
             this.保存SToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.保存SToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.保存SToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.保存SToolStripMenuItem.Text = "保存(&S)...";
             this.保存SToolStripMenuItem.Click += new System.EventHandler(this.保存SToolStripMenuItem_Click);
             // 
@@ -468,7 +468,7 @@ namespace CarReportSystem {
             // 
             this.終了XToolStripMenuItem.Name = "終了XToolStripMenuItem";
             this.終了XToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.終了XToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.終了XToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.終了XToolStripMenuItem.Text = "終了(&X)";
             this.終了XToolStripMenuItem.Click += new System.EventHandler(this.終了XToolStripMenuItem_Click);
             // 
@@ -666,7 +666,7 @@ namespace CarReportSystem {
         private System.Windows.Forms.Button btImageDelete;
         private System.Windows.Forms.MenuStrip menuItems;
         private System.Windows.Forms.ToolStripMenuItem ファイルFToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 開くOToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 接続OToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 保存SToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 終了XToolStripMenuItem;
         private System.Windows.Forms.PictureBox pbCarImage;

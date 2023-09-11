@@ -267,26 +267,13 @@ namespace CarReportSystem {
 
         private void 開くOToolStripMenuItem_Click(object sender, EventArgs e) {
 
-            if (ofdCarRepoOpen.ShowDialog() == DialogResult.OK) {
-                try {
-                    //逆シリアル化をバイナリ形式を取り組む
-                    var bf = new BinaryFormatter();
-                    using (FileStream fs = File.Open(ofdCarRepoOpen.FileName, FileMode.Open, FileAccess.Read)) {
-                        CarReports = (BindingList<CarReport>)bf.Deserialize(fs);
-                        dgvCarReports.DataSource = null;
-                        dgvCarReports.DataSource = CarReports;
-                        Clear();
-                        foreach (var item in CarReports) {
-                            setCbAuthor(item.Author);
-                            setCbCarName(item.CarName);
-                        }
-                        dgvCarReports.ClearSelection();
-                        dgvCarReports.Columns[5].Visible = false;
-                    }
-                }
-                catch (Exception ex) {
-                    MessageBox.Show(ex.Message);
-                }
+            // TODO: このコード行はデータを 'infosys202315DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
+            this.carReportTableTableAdapter.Fill(this.infosys202315DataSet.CarReportTable);
+            dgvCarReports.ClearSelection(); //選択解除
+
+            foreach (var carReport in infosys202315DataSet.CarReportTable) {
+                setCbAuthor(carReport.Author);
+                setCbCarName(carReport.CarName);
             }
         }
 
