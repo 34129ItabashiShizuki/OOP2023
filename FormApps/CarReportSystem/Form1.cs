@@ -130,6 +130,7 @@ namespace CarReportSystem {
             dgvCarReports.RowsDefaultCellStyle.BackColor = Color.LightYellow; //全体に色設定
             dgvCarReports.AlternatingRowsDefaultCellStyle.BackColor = Color.LightBlue;  //奇数行の色設定
             dgvCarReports.Columns[6].Visible = false; //画像項目非表示
+            dgvCarReports.Columns[0].Visible = false; //Id項目非表示
             btModifyReport.Enabled = false; //修正ボタン無効
             btDeleteReport.Enabled = false; //削除ボタン無効
             btImageDelete.Enabled = false;
@@ -336,8 +337,13 @@ namespace CarReportSystem {
             carReportTableTableAdapter.FillByCarName(this.infosys202315DataSet.CarReportTable, tbCarNameSearch.Text);
         }
 
-        private void btReset_Click(object sender, EventArgs e) {
-
+        private void btDateSearch_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByDatetoDate(this.infosys202315DataSet.CarReportTable, dtpDateSearch.Text,dtpDateSearch2.Text);
         }
+
+        private void btReset_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.Fill(this.infosys202315DataSet.CarReportTable);
+        }
+
     }
 }

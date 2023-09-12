@@ -79,6 +79,8 @@ namespace CarReportSystem {
             this.ofdCarRepoOpen = new System.Windows.Forms.OpenFileDialog();
             this.sfdCarRepoSave = new System.Windows.Forms.SaveFileDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.btDateSearch = new System.Windows.Forms.Button();
             this.btReset = new System.Windows.Forms.Button();
             this.btCarNameSearch = new System.Windows.Forms.Button();
             this.btAuthorSearch = new System.Windows.Forms.Button();
@@ -87,10 +89,10 @@ namespace CarReportSystem {
             this.tbCarNameSearch = new System.Windows.Forms.TextBox();
             this.tbAuthorSearch = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpDateSearch2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpDateSearch = new System.Windows.Forms.DateTimePicker();
             this.carReportTableTableAdapter = new CarReportSystem.infosys202315DataSetTableAdapters.CarReportTableTableAdapter();
             this.tableAdapterManager = new CarReportSystem.infosys202315DataSetTableAdapters.TableAdapterManager();
-            this.btDateSearch = new System.Windows.Forms.Button();
             this.gbMaker.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarReports)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.carReportTableBindingSource)).BeginInit();
@@ -571,8 +573,9 @@ namespace CarReportSystem {
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btReset);
+            this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.btDateSearch);
+            this.groupBox1.Controls.Add(this.btReset);
             this.groupBox1.Controls.Add(this.btCarNameSearch);
             this.groupBox1.Controls.Add(this.btAuthorSearch);
             this.groupBox1.Controls.Add(this.label9);
@@ -580,19 +583,39 @@ namespace CarReportSystem {
             this.groupBox1.Controls.Add(this.tbCarNameSearch);
             this.groupBox1.Controls.Add(this.tbAuthorSearch);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Location = new System.Drawing.Point(40, 387);
+            this.groupBox1.Controls.Add(this.dtpDateSearch2);
+            this.groupBox1.Controls.Add(this.dtpDateSearch);
+            this.groupBox1.Location = new System.Drawing.Point(41, 387);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(616, 167);
+            this.groupBox1.Size = new System.Drawing.Size(485, 223);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "検索";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(220, 158);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(17, 12);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "～";
+            // 
+            // btDateSearch
+            // 
+            this.btDateSearch.Location = new System.Drawing.Point(375, 147);
+            this.btDateSearch.Name = "btDateSearch";
+            this.btDateSearch.Size = new System.Drawing.Size(103, 23);
+            this.btDateSearch.TabIndex = 4;
+            this.btDateSearch.Text = "日付で検索";
+            this.btDateSearch.UseVisualStyleBackColor = true;
+            this.btDateSearch.Click += new System.EventHandler(this.btDateSearch_Click);
+            // 
             // btReset
             // 
-            this.btReset.Location = new System.Drawing.Point(522, 18);
+            this.btReset.Location = new System.Drawing.Point(375, 18);
             this.btReset.Name = "btReset";
-            this.btReset.Size = new System.Drawing.Size(75, 23);
+            this.btReset.Size = new System.Drawing.Size(103, 23);
             this.btReset.TabIndex = 3;
             this.btReset.Text = "リセット";
             this.btReset.UseVisualStyleBackColor = true;
@@ -600,7 +623,7 @@ namespace CarReportSystem {
             // 
             // btCarNameSearch
             // 
-            this.btCarNameSearch.Location = new System.Drawing.Point(375, 75);
+            this.btCarNameSearch.Location = new System.Drawing.Point(375, 89);
             this.btCarNameSearch.Name = "btCarNameSearch";
             this.btCarNameSearch.Size = new System.Drawing.Size(103, 23);
             this.btCarNameSearch.TabIndex = 2;
@@ -610,7 +633,7 @@ namespace CarReportSystem {
             // 
             // btAuthorSearch
             // 
-            this.btAuthorSearch.Location = new System.Drawing.Point(375, 38);
+            this.btAuthorSearch.Location = new System.Drawing.Point(375, 55);
             this.btAuthorSearch.Name = "btAuthorSearch";
             this.btAuthorSearch.Size = new System.Drawing.Size(103, 23);
             this.btAuthorSearch.TabIndex = 2;
@@ -621,7 +644,7 @@ namespace CarReportSystem {
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(47, 80);
+            this.label9.Location = new System.Drawing.Point(47, 94);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(29, 12);
             this.label9.TabIndex = 1;
@@ -630,7 +653,7 @@ namespace CarReportSystem {
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(47, 41);
+            this.label8.Location = new System.Drawing.Point(47, 58);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(41, 12);
             this.label8.TabIndex = 1;
@@ -638,14 +661,14 @@ namespace CarReportSystem {
             // 
             // tbCarNameSearch
             // 
-            this.tbCarNameSearch.Location = new System.Drawing.Point(103, 77);
+            this.tbCarNameSearch.Location = new System.Drawing.Point(103, 91);
             this.tbCarNameSearch.Name = "tbCarNameSearch";
             this.tbCarNameSearch.Size = new System.Drawing.Size(254, 19);
             this.tbCarNameSearch.TabIndex = 0;
             // 
             // tbAuthorSearch
             // 
-            this.tbAuthorSearch.Location = new System.Drawing.Point(103, 38);
+            this.tbAuthorSearch.Location = new System.Drawing.Point(103, 55);
             this.tbAuthorSearch.Name = "tbAuthorSearch";
             this.tbAuthorSearch.Size = new System.Drawing.Size(254, 19);
             this.tbAuthorSearch.TabIndex = 0;
@@ -653,18 +676,25 @@ namespace CarReportSystem {
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(47, 116);
+            this.label10.Location = new System.Drawing.Point(47, 138);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(35, 12);
             this.label10.TabIndex = 1;
             this.label10.Text = "日付：";
             // 
-            // dateTimePicker1
+            // dtpDateSearch2
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(103, 109);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(254, 19);
-            this.dateTimePicker1.TabIndex = 1;
+            this.dtpDateSearch2.Location = new System.Drawing.Point(222, 170);
+            this.dtpDateSearch2.Name = "dtpDateSearch2";
+            this.dtpDateSearch2.Size = new System.Drawing.Size(135, 19);
+            this.dtpDateSearch2.TabIndex = 1;
+            // 
+            // dtpDateSearch
+            // 
+            this.dtpDateSearch.Location = new System.Drawing.Point(103, 131);
+            this.dtpDateSearch.Name = "dtpDateSearch";
+            this.dtpDateSearch.Size = new System.Drawing.Size(134, 19);
+            this.dtpDateSearch.TabIndex = 1;
             // 
             // carReportTableTableAdapter
             // 
@@ -675,16 +705,6 @@ namespace CarReportSystem {
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.CarReportTableTableAdapter = this.carReportTableTableAdapter;
             this.tableAdapterManager.UpdateOrder = CarReportSystem.infosys202315DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // btDateSearch
-            // 
-            this.btDateSearch.Location = new System.Drawing.Point(375, 109);
-            this.btDateSearch.Name = "btDateSearch";
-            this.btDateSearch.Size = new System.Drawing.Size(103, 23);
-            this.btDateSearch.TabIndex = 2;
-            this.btDateSearch.Text = "日付で検索";
-            this.btDateSearch.UseVisualStyleBackColor = true;
-            this.btDateSearch.Click += new System.EventHandler(this.btCarNameSearch_Click);
             // 
             // Form1
             // 
@@ -803,8 +823,10 @@ namespace CarReportSystem {
         private System.Windows.Forms.TextBox tbCarNameSearch;
         private System.Windows.Forms.Button btReset;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpDateSearch;
         private System.Windows.Forms.Button btDateSearch;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.DateTimePicker dtpDateSearch2;
     }
 }
 
