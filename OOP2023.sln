@@ -127,7 +127,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarReportSystem", "FormApps
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter13", "Chapter13", "{FBDD1534-F850-4B7C-9FC0-EC3A64D8CBA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleEntityFramewaork", "Chapter13\SampleEntityFramewaork\SampleEntityFramewaork.csproj", "{313851A3-7BF7-428F-AC6F-38973ED5BB79}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleEntityFramework", "Chapter13\SampleEntityFramewaork\SampleEntityFramework.csproj", "{313851A3-7BF7-428F-AC6F-38973ED5BB79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
