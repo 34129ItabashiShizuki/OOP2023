@@ -10,6 +10,7 @@ namespace SampleEntityFramewaork.Models {
         public int Id { get; set; } //主キー
         [MaxLength(30)]
         [Required]
+        public string Name { get; set; }
         public string Title { get; set; }
         public int PublishedYear { get; set; }
         public virtual Author Author { get; set; }
