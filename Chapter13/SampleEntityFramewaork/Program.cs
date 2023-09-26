@@ -122,8 +122,7 @@ namespace SampleEntityFramewaork {
 
         private static void Exercise1_3() {
             using (var db = new BooksDbContext()) {
-                var aki = db.Books.Max(s => s.Title.Length);
-                var hisa = db.Books.Where(w => w.Title.Length == aki);
+                var hisa = db.Books.Where(w => w.Title.Length == db.Books.Max(s => s.Title.Length)); 
                 foreach (var book in hisa) {
                     Console.WriteLine(book.Title);
                 }
