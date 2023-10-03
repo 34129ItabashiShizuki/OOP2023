@@ -238,6 +238,7 @@ namespace CarReportSystem {
             this.tbReport.Name = "tbReport";
             this.tbReport.Size = new System.Drawing.Size(254, 119);
             this.tbReport.TabIndex = 5;
+            this.tbReport.TextChanged += new System.EventHandler(this.tbReport_TextChanged);
             // 
             // dgvCarReports
             // 
