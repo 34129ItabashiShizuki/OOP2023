@@ -28,19 +28,22 @@ namespace RssReader {
             this.btGet = new System.Windows.Forms.Button();
             this.lbRssTitle = new System.Windows.Forms.ListBox();
             this.wbBrowser = new System.Windows.Forms.WebBrowser();
+            this.btBack = new System.Windows.Forms.Button();
+            this.btGo = new System.Windows.Forms.Button();
+            this.btGoHome = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbUrl
             // 
             this.tbUrl.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbUrl.Location = new System.Drawing.Point(66, 29);
+            this.tbUrl.Location = new System.Drawing.Point(292, 29);
             this.tbUrl.Name = "tbUrl";
             this.tbUrl.Size = new System.Drawing.Size(585, 31);
             this.tbUrl.TabIndex = 0;
             // 
             // btGet
             // 
-            this.btGet.Location = new System.Drawing.Point(691, 29);
+            this.btGet.Location = new System.Drawing.Point(922, 29);
             this.btGet.Name = "btGet";
             this.btGet.Size = new System.Drawing.Size(97, 31);
             this.btGet.TabIndex = 1;
@@ -54,7 +57,7 @@ namespace RssReader {
             this.lbRssTitle.ItemHeight = 12;
             this.lbRssTitle.Location = new System.Drawing.Point(66, 94);
             this.lbRssTitle.Name = "lbRssTitle";
-            this.lbRssTitle.Size = new System.Drawing.Size(722, 100);
+            this.lbRssTitle.Size = new System.Drawing.Size(953, 100);
             this.lbRssTitle.TabIndex = 2;
             this.lbRssTitle.SelectedIndexChanged += new System.EventHandler(this.lbRssTitle_SelectedIndexChanged);
             // 
@@ -67,17 +70,56 @@ namespace RssReader {
             this.wbBrowser.Size = new System.Drawing.Size(1162, 426);
             this.wbBrowser.TabIndex = 3;
             // 
+            // btBack
+            // 
+            this.btBack.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btBack.Location = new System.Drawing.Point(66, 29);
+            this.btBack.Name = "btBack";
+            this.btBack.Size = new System.Drawing.Size(49, 31);
+            this.btBack.TabIndex = 4;
+            this.btBack.Text = "←";
+            this.btBack.UseVisualStyleBackColor = true;
+            this.btBack.Click += new System.EventHandler(this.btBack_Click);
+            // 
+            // btGo
+            // 
+            this.btGo.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btGo.Location = new System.Drawing.Point(131, 29);
+            this.btGo.Name = "btGo";
+            this.btGo.Size = new System.Drawing.Size(49, 31);
+            this.btGo.TabIndex = 5;
+            this.btGo.Text = "→";
+            this.btGo.UseVisualStyleBackColor = true;
+            this.btGo.Click += new System.EventHandler(this.btGo_Click);
+            // 
+            // btGoHome
+            // 
+            this.btGoHome.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btGoHome.Location = new System.Drawing.Point(208, 29);
+            this.btGoHome.Name = "btGoHome";
+            this.btGoHome.Size = new System.Drawing.Size(49, 31);
+            this.btGoHome.TabIndex = 6;
+            this.btGoHome.Text = "↻";
+            this.btGoHome.UseVisualStyleBackColor = true;
+            this.btGoHome.Click += new System.EventHandler(this.btGoHome_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1256, 677);
+            this.Controls.Add(this.btGoHome);
+            this.Controls.Add(this.btGo);
+            this.Controls.Add(this.btBack);
             this.Controls.Add(this.wbBrowser);
             this.Controls.Add(this.lbRssTitle);
             this.Controls.Add(this.btGet);
             this.Controls.Add(this.tbUrl);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.SizeChanged += new System.EventHandler(this.Form1_Load);
+            this.Resize += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -89,6 +131,9 @@ namespace RssReader {
         private System.Windows.Forms.Button btGet;
         private System.Windows.Forms.ListBox lbRssTitle;
         private System.Windows.Forms.WebBrowser wbBrowser;
+        private System.Windows.Forms.Button btBack;
+        private System.Windows.Forms.Button btGo;
+        private System.Windows.Forms.Button btGoHome;
     }
 }
 
