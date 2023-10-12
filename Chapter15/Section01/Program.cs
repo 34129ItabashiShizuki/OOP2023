@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Section01 {
+namespace Exercise01 {
     class Program {
         static void Main(string[] args) {
             //MaximumPrice();

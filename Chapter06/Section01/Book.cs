@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 // List 6-1
 
-namespace Section01 {
+namespace Exercise01 {
     class Book {
         public string Title { get; set; }
         public int Price { get; set; }
