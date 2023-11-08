@@ -33,7 +33,7 @@
             <TextBox x:Name="rValue" Grid.Row="0" Grid.Column="3" Text="{Binding ElementName=rSlider,Path=Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:0}}" Margin="5,15,5,15" VerticalAlignment="Center" FontSize="20"/>
             <TextBlock Text="G" Grid.Row="1" Grid.Column="0" Margin="10,22,10,10" FontSize="20"/>
             <Slider x:Name="gSlider" Grid.Row="1" Grid.Column="1" Margin="10,22,10,5" TickPlacement="TopLeft" Maximum="255" ValueChanged="RGBSlider_ValueChanged"/>
-            <TextBox x:Name="gvalue" Grid.Row="1" Grid.Column="3" Text="{Binding ElementName=gSlider,Path=Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:0}}" Margin="5,15,5,15" VerticalAlignment="Top" FontSize="20"/>
+            <TextBox x:Name="gValue" Grid.Row="1" Grid.Column="3" Text="{Binding ElementName=gSlider,Path=Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:0}}" Margin="5,15,5,15" VerticalAlignment="Top" FontSize="20"/>
             <TextBlock Text="B" Grid.Row="2" Grid.Column="0" Margin="10,22,10,10" FontSize="20"/>
             <Slider x:Name="bSlider" Grid.Row="2" Grid.Column="1" Margin="10,22,10,5" TickPlacement="TopLeft" Maximum="255" ValueChanged="RGBSlider_ValueChanged"/>
             <TextBox x:Name="bValue" Grid.Row="2" Grid.Column="3" Text="{Binding ElementName=bSlider,Path=Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:0}}" Margin="5,15,5,15" VerticalAlignment="Top" FontSize="20"/>
@@ -55,7 +55,7 @@
         <Grid Grid.Row="0" Grid.Column="2">
 
             <Button x:Name="stockButton" Content="STOCK" Grid.Row="0" Margin="10,10,10,172" Click="stockButton_Click"/>
-            <ListBox x:Name="stockList" Margin="0,110,10,10" HorizontalAlignment="Right" Width="210"/>
+            <ListBox x:Name="stockList" Margin="0,110,10,10" HorizontalAlignment="Right" Width="210" SelectionChanged="stockList_SelectionChanged"/>
         </Grid>
     </Grid>
 </Window>

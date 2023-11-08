@@ -53,13 +53,14 @@ namespace RssReader {
             wbBrowser.GoForward();
         }
 
-        private void btGoHome_Click(object sender, EventArgs e) {
-            wbBrowser.GoHome();
-        }
-
         private void Form1_Load(object sender, EventArgs e) {
             
 
+        }
+
+        private void FavReport_Click(object sender, EventArgs e) {
+            //String url = FavReport.Items[FavReport.SelectIndex];
+            wbBrowser.Url = new Uri(tbUrl.Text);
         }
     }
 }

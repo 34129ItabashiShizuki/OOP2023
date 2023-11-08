@@ -30,7 +30,7 @@ namespace RssReader {
             this.wbBrowser = new System.Windows.Forms.WebBrowser();
             this.btBack = new System.Windows.Forms.Button();
             this.btGo = new System.Windows.Forms.Button();
-            this.btGoHome = new System.Windows.Forms.Button();
+            this.FavReport = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbUrl
@@ -92,23 +92,23 @@ namespace RssReader {
             this.btGo.UseVisualStyleBackColor = true;
             this.btGo.Click += new System.EventHandler(this.btGo_Click);
             // 
-            // btGoHome
+            // FavReport
             // 
-            this.btGoHome.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btGoHome.Location = new System.Drawing.Point(208, 29);
-            this.btGoHome.Name = "btGoHome";
-            this.btGoHome.Size = new System.Drawing.Size(49, 31);
-            this.btGoHome.TabIndex = 6;
-            this.btGoHome.Text = "↻";
-            this.btGoHome.UseVisualStyleBackColor = true;
-            this.btGoHome.Click += new System.EventHandler(this.btGoHome_Click);
+            this.FavReport.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.FavReport.Location = new System.Drawing.Point(197, 29);
+            this.FavReport.Name = "FavReport";
+            this.FavReport.Size = new System.Drawing.Size(49, 31);
+            this.FavReport.TabIndex = 6;
+            this.FavReport.Text = "♥";
+            this.FavReport.UseVisualStyleBackColor = true;
+            this.FavReport.Click += new System.EventHandler(this.FavReport_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1256, 677);
-            this.Controls.Add(this.btGoHome);
+            this.Controls.Add(this.FavReport);
             this.Controls.Add(this.btGo);
             this.Controls.Add(this.btBack);
             this.Controls.Add(this.wbBrowser);
@@ -133,7 +133,7 @@ namespace RssReader {
         private System.Windows.Forms.WebBrowser wbBrowser;
         private System.Windows.Forms.Button btBack;
         private System.Windows.Forms.Button btGo;
-        private System.Windows.Forms.Button btGoHome;
+        private System.Windows.Forms.Button FavReport;
     }
 }
 
