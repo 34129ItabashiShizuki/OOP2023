@@ -254,7 +254,7 @@ namespace RssReader {
             this.Controls.Add(this.btGet);
             this.Controls.Add(this.tbUrl);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "RssReader";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.SizeChanged += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.Form1_Load);

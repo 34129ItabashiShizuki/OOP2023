@@ -100,12 +100,20 @@ namespace RssReader {
 
         private void FavReport_Click(object sender, EventArgs e) {
             try {
-                FavData favData = new FavData(ItemDatas[lbRssTitle.SelectedIndex].Link, tbFavName.Text);
-                cbFavList.Items.Add(favData);
-                tbFavName.Text = "";
+                if (tbFavName.Text == "") {
+                    var vf = new Form2();
+                    vf.ShowDialog();    //モーダルダイヤログとして表示
+                }
+                else {
+                    FavData favData = new FavData(ItemDatas[lbRssTitle.SelectedIndex].Link, tbFavName.Text);
+                    cbFavList.Items.Add(favData);
+                    tbFavName.Text = "";
+                }
+                
             }
             catch (System.ArgumentOutOfRangeException) {
                 return;
+                
             }
             
         }
