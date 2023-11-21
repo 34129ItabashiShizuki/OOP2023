@@ -14,7 +14,6 @@ namespace RssReader {
     public partial class Form1 : Form {
         //取得データ保存用
         List<ItemData> ItemDatas = new　List<ItemData>();
-
         public Form1() {
             InitializeComponent();
         }
@@ -25,6 +24,27 @@ namespace RssReader {
             }
             lbRssTitle.Items.Clear();
             using(var wc = new WebClient()) {
+                var url = wc.OpenRead(tbUrl.Text);
+                XDocument xdoc = XDocument.Load(url);
+
+                ItemDatas = xdoc.Root.Descendants("item")
+                                                .Select(x => new ItemData {
+                                                    Title = (string)x.Element("title"),
+                                                    Link = (string)x.Element("link")
+                                                }).ToList();
+
+                foreach (var item in ItemDatas) {
+                    lbRssTitle.Items.Add(item.Title);
+                }
+            }
+        }
+
+        public void BtGet() {
+            if (tbUrl.Text == "") {
+                return;
+            }
+            lbRssTitle.Items.Clear();
+            using (var wc = new WebClient()) {
                 var url = wc.OpenRead(tbUrl.Text);
                 XDocument xdoc = XDocument.Load(url);
 
@@ -58,9 +78,63 @@ namespace RssReader {
 
         }
 
-        private void FavReport_Click(object sender, EventArgs e) {
-            //String url = FavReport.Items[FavReport.SelectIndex];
-            wbBrowser.Url = new Uri(tbUrl.Text);
+        private void rbFav1_CheckedChanged(object sender, EventArgs e) {
+            tbUrl.Text = "https://news.yahoo.co.jp/rss/media/bunshun/all.xml";
+            BtGet();
         }
+
+        private void rbFav2_CheckedChanged(object sender, EventArgs e) {
+            tbUrl.Text = "https://news.yahoo.co.jp/rss/media/norimono/all.xml";
+            BtGet();
+        }
+
+        private void rbFav3_CheckedChanged(object sender, EventArgs e) {
+            tbUrl.Text = "https://news.yahoo.co.jp/rss/media/nekomag/all.xml";
+            BtGet();
+        }
+
+        private void rbFav4_CheckedChanged(object sender, EventArgs e) {
+            tbUrl.Text = "https://news.yahoo.co.jp/rss/media/fvision/all.xml";
+            BtGet();
+        }
+
+        private void FavReport_Click(object sender, EventArgs e) {
+            try {
+                FavData favData = new FavData(ItemDatas[lbRssTitle.SelectedIndex].Link, tbFavName.Text);
+                cbFavList.Items.Add(favData);
+                tbFavName.Text = "";
+            }
+            catch (System.ArgumentOutOfRangeException) {
+                return;
+            }
+            
+        }
+
+        private void cbFavList_SelectedIndexChanged(object sender, EventArgs e) {
+            FavData favData = (FavData)cbFavList.SelectedItem;
+            wbBrowser.Navigate(favData.Link);
+        }
+
+        private void btClear_Click(object sender, EventArgs e) {
+            tbUrl.Text = "";
+            cbFavList.Text = "";
+            lbRssTitle.Items.Clear();
+            wbBrowser.DocumentText = "";
+            cbFavList.Items.Clear();
+        }
+
+        private void btRefresh_Click(object sender, EventArgs e) {
+            wbBrowser.Refresh();
+        }
+
+        private void btFavDelete_Click(object sender, EventArgs e) {
+            try {
+                cbFavList.Items.RemoveAt(cbFavList.SelectedIndex);
+            }
+            catch (System.ArgumentOutOfRangeException) {
+                return;
+            }
+        }
+        //ラジオボタン選択解除
     }
 }

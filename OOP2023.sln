@@ -203,6 +203,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleUnitConverter", "WPF\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeightConverter", "WPF\WeightConverter\WeightConverter.csproj", "{77B1460B-C04E-49EA-B8DF-3129B70B4C9A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisibilityConverter", "WPF\VisibilityConverter\VisibilityConverter.csproj", "{450F393D-AE1D-4A7F-9201-498C7F89383F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -473,6 +475,10 @@ Global
 		{77B1460B-C04E-49EA-B8DF-3129B70B4C9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77B1460B-C04E-49EA-B8DF-3129B70B4C9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77B1460B-C04E-49EA-B8DF-3129B70B4C9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{450F393D-AE1D-4A7F-9201-498C7F89383F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{450F393D-AE1D-4A7F-9201-498C7F89383F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{450F393D-AE1D-4A7F-9201-498C7F89383F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{450F393D-AE1D-4A7F-9201-498C7F89383F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -561,6 +567,7 @@ Global
 		{C3B8FE22-9241-49D4-8401-C47445C212E9} = {21FD534B-93BF-4CB6-A15F-F016D619F9FE}
 		{CBFCDC32-9CC4-42AF-B956-6B365108394D} = {21FD534B-93BF-4CB6-A15F-F016D619F9FE}
 		{77B1460B-C04E-49EA-B8DF-3129B70B4C9A} = {21FD534B-93BF-4CB6-A15F-F016D619F9FE}
+		{450F393D-AE1D-4A7F-9201-498C7F89383F} = {21FD534B-93BF-4CB6-A15F-F016D619F9FE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {663EC231-78B1-4E6D-BAA2-4636DEBF8BB1}

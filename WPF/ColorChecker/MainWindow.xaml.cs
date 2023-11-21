@@ -24,6 +24,18 @@ namespace ColorChecker {
             DataContext = GetColorList();
         }
 
+        public class MyColor {
+            public Color Color { get; set; }
+            public string Name { get; set; }
+        }
+        List<MyColor> mycolors = new List<MyColor>();
+
+        public class StockColor {
+            public int R { get; set; }
+            public int G { get; set; }
+            public int B { get; set; }
+        }
+
         private void RGBSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
             Color rgb = Color.FromRgb((byte)rSlider.Value, (byte)gSlider.Value, (byte)bSlider.Value);
             SolidColorBrush brush = new SolidColorBrush(rgb);
@@ -31,7 +43,16 @@ namespace ColorChecker {
         }
 
         private void stockButton_Click(object sender, RoutedEventArgs e) {
-            stockList.Items.Add(" R " + rSlider.Value + " G " + gSlider.Value + " B " + bSlider.Value);
+            var colorlist = GetColorList();
+
+            var color = String.Format("R {0} G {1} B {2}", rSlider.Value, gSlider.Value, bSlider.Value);
+
+            var colorname = colorlist.FirstOrDefault(x => x.Color == ((SolidColorBrush)colorArea.Background).Color)?.Name ?? color;
+
+            MyColor colordata = new MyColor { Color = ((SolidColorBrush)colorArea.Background).Color, Name = colorname };
+
+            mycolors.Add(colordata);
+            stockList.Items.Add(colordata.Name);
 
         }
 
@@ -52,14 +73,28 @@ namespace ColorChecker {
         }
 
         private void stockList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            var colorlist = GetColorList();
+
+            foreach (var n in colorlist) {
+                if (stockList.SelectedItem.ToString() == n.Name) {
+                    rValue.Text = n.Color.R.ToString();
+                    gValue.Text = n.Color.G.ToString();
+                    bValue.Text = n.Color.B.ToString();
+                }
+            }
+
             string[] s = stockList.SelectedItem.ToString().Split(' ');
-            rValue.Text = s[1];
-            gValue.Text = s[3];
-            bValue.Text = s[5];
+            if (s.Length > 4) {
+                rValue.Text = s[1];
+                gValue.Text = s[3];
+                bValue.Text = s[5];
+            }
+        }
+
+        private void stockButton_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
+            var data = stockList.Items[stockList.SelectedIndex];
+            var color = GetColorList().Where(c => c.Name.Equals(data)).FirstOrDefault();
         }
     }
-    public class MyColor {
-        public Color Color { get; set; }
-        public string Name { get; set; }
-    }
+   
 }
